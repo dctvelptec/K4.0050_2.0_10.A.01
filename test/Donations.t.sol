@@ -20,10 +20,7 @@ contract CounterTest is Test {
     }
 
     function testDonateHappyPath() public {
-        Donations.Donation memory _donation = Donations.Donation({
-            amount: 1e16,
-            ipfs: ipfsHash
-        });
+        Donations.Donation memory _donation = Donations.Donation({amount: 1e16, ipfs: ipfsHash});
 
         vm.prank(donorA);
         vm.expectEmit(true, false, false, true, address(donations));
@@ -71,9 +68,7 @@ contract CounterTest is Test {
         vm.prank(donorA);
         donations.donate{value: 2e16}(ipfsHash);
 
-        Donations.Donation[] memory _donations = donations.getDonationsByDonor(
-            donorA
-        );
+        Donations.Donation[] memory _donations = donations.getDonationsByDonor(donorA);
 
         assertEq(_donations.length, 2);
         assertEq(_donations[0].amount, 1e16);

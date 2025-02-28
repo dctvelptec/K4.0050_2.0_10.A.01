@@ -36,9 +36,7 @@ contract Donations {
         emit Donated(msg.sender, _donation);
     }
 
-    function getDonationsByDonor(
-        address _donor
-    ) external view returns (Donation[] memory _donations) {
+    function getDonationsByDonor(address _donor) external view returns (Donation[] memory _donations) {
         uint256 _length = donations[_donor].length;
         if (_length == 0) return _donations;
         _donations = new Donation[](_length);
